@@ -18,7 +18,8 @@ fn print(path: &str, ratio: u32) -> Result<(), Box<dyn Error>> {
 
 fn main() {
     let (path, ratio) = UserInteractionUtils::get_path_and_ratio();
-    let _ = print(&path, ratio);
-
-
+    match print(&path, ratio) {
+        Ok(()) => return,
+        Err(err) => println!("Png could not be rendered into ascii.\n{err}"),
+    };
 }
